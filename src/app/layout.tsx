@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+// import SessionProviderWrapper from "./components/SessionProviderWrapper";
+import ApolloProviderWrapper from "./components/ApolloProviderWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,16 +20,32 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
+  chat,
+  main,
+  sidebar,
+}: // modal,
+Readonly<{
+  chat: React.ReactNode;
+  main: React.ReactNode;
+  sidebar: React.ReactNode;
+  // modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
-        {children}
+        <ApolloProviderWrapper>
+          {/* <SessionProviderWrapper> */}
+          <div className="grid grid-cols-[250px_1fr_300px] min-h-screen">
+            <aside className="bg-gray-100 p-4">{sidebar}</aside>
+            <main className="p-6">{main}</main>
+            <div className="bg-yellow-50 p-4">{chat}</div>
+          </div>
+          {/* Slot để render modal (nằm ngoài grid) */}
+          {/* {modal} */}
+          {/* </SessionProviderWrapper> */}
+        </ApolloProviderWrapper>
       </body>
     </html>
   );
