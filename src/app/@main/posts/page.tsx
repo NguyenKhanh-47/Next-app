@@ -13,7 +13,7 @@ async function getPosts(): Promise<Post[]> {
     cache: "force-cache",
   });
   const data = await res.json();
-  return data.slice(0, 5);
+  return data.slice(0, 6);
 }
 
 export default async function PostsPage() {
