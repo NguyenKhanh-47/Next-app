@@ -1,29 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useCreateUser } from "@/hooks/useUsers";
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-
-export function middleware(request: NextRequest) {
-  // Lấy access token từ cookie
-  const accessToken = request.cookies.get("accessToken")?.value;
-
-  // Kiểm tra nếu truy cập /main/members hoặc /main/members/create mà không có token thì redirect
-  if (request.nextUrl.pathname.startsWith("/main/members") && !accessToken) {
-    // Redirect sang /main/posts
-    const url = request.nextUrl.clone();
-    url.pathname = "/main/posts";
-    return NextResponse.redirect(url);
-  }
-
-  // Cho phép truy cập các route khác
-  return NextResponse.next();
-}
-
-// Chỉ áp dụng middleware cho các route cần bảo vệ
-export const config = {
-  matcher: ["/main/members/:path*"],
-};
 
 export default function CreateMemberPage() {
   const { createUser, loading, error } = useCreateUser();
