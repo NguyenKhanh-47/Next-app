@@ -1,4 +1,5 @@
 // app/posts/[id]/page.tsx
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type Post = {
@@ -36,9 +37,9 @@ export default async function PostDetailPage({ params }: PageProps) {
       <p className="text-gray-700 text-lg">{post.body}</p>
 
       <div className="mt-6">
-        <a href="/posts" className="text-blue-600 hover:underline">
+        <Link href="/posts" className="text-blue-600 hover:underline">
           ← Quay lại danh sách bài viết
-        </a>
+        </Link>
       </div>
     </div>
   );
