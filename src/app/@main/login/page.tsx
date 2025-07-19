@@ -18,6 +18,7 @@ export default function LoginPage() {
     setError("");
     try {
       const result = await loginUser(form.email, form.password);
+      console.log("🚀 ~ handleLogin ~ result:", result);
       if (result) {
         // Nếu backend set httpOnly cookie, chỉ cần redirect, không cần lưu token ở FE
         router.push("/members");

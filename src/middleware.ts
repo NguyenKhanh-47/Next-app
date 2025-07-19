@@ -4,6 +4,7 @@ import type { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
   const accessToken = request.cookies.get("access_token")?.value;
+  console.log("🚀 ~ middleware ~ accessToken:", accessToken);
   let isAuthenticated = false;
 
   if (accessToken) {
