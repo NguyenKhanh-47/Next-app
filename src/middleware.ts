@@ -38,6 +38,7 @@ export async function middleware(request: NextRequest) {
   ) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
+    console.log("🚀 ~ middleware ~ url:", url);
     return NextResponse.redirect(url);
   }
 
