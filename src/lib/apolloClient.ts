@@ -29,7 +29,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 // ✅ HttpLink để gửi request GraphQL
 const httpLink = new HttpLink({
-  uri: process.env.BE_URL || "http://localhost:3001/graphql",
+  uri: process.env.NEXT_PUBLIC_BE_URL || "http://localhost:3001/graphql",
   credentials: "include", // ⚠️ cần để cookie HttpOnly được gửi từ FE
 });
 
